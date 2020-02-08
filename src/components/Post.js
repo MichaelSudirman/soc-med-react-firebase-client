@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime'
 // Material UI imports
-import withStyles from "@material-ui/core/styles/withStyles";
+import {withStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
