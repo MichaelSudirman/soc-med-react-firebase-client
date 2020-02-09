@@ -9,6 +9,12 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+/*
+  setting axios default url under the POST bug,
+  cannot POST using proxy key under pacakage.json
+*/
+axios.defaults.baseURL = "https://us-central1-soc-med.cloudfunctions.net/api";
+
 const styles = {
   form: {
     textAlign: "center"
@@ -47,7 +53,7 @@ class login extends Component {
       password: this.state.password
     };
     axios
-      .post("/post", userData)
+      .post("/login", userData)
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -56,6 +62,7 @@ class login extends Component {
         this.props.history.push("/");
       })
       .catch(err => {
+        console.log(err)
         this.setState({
           errors: err.response.data,
           loading: false
