@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/soc-med-client/static/css/main.ac8c1c64.chunk.css",
+    "main.js": "/soc-med-client/static/js/main.8c2aa9cf.chunk.js",
+    "main.js.map": "/soc-med-client/static/js/main.8c2aa9cf.chunk.js.map",
+    "runtime-main.js": "/soc-med-client/static/js/runtime-main.56f267c5.js",
+    "runtime-main.js.map": "/soc-med-client/static/js/runtime-main.56f267c5.js.map",
+    "static/js/2.394ad71f.chunk.js": "/soc-med-client/static/js/2.394ad71f.chunk.js",
+    "static/js/2.394ad71f.chunk.js.map": "/soc-med-client/static/js/2.394ad71f.chunk.js.map",
+    "index.html": "/soc-med-client/index.html",
+    "precache-manifest.fbed774ddf4dd6f0f867ca1f8cd3f357.js": "/soc-med-client/precache-manifest.fbed774ddf4dd6f0f867ca1f8cd3f357.js",
+    "service-worker.js": "/soc-med-client/service-worker.js",
+    "static/css/main.ac8c1c64.chunk.css.map": "/soc-med-client/static/css/main.ac8c1c64.chunk.css.map",
+    "static/js/2.394ad71f.chunk.js.LICENSE.txt": "/soc-med-client/static/js/2.394ad71f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.56f267c5.js",
+    "static/js/2.394ad71f.chunk.js",
+    "static/css/main.ac8c1c64.chunk.css",
+    "static/js/main.8c2aa9cf.chunk.js"
+  ]
+}
