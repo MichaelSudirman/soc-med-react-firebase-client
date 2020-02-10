@@ -1,5 +1,5 @@
 export default {
-  pallete: {
+  palette: {
     primary: {
       light: "#33c9dc",
       main: "#00bcd4",

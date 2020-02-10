@@ -10,7 +10,7 @@ import signup from "./pages/signup";
 // Components
 import Navbar from "./components/Navbar";
 // Utils
-import themeObject from "./components/Navbar";
+import themeObject from "./util/theme";
 import AuthRoute from "./util/AuthRoute";
 // Material UI imports
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
@@ -28,15 +28,12 @@ let authenticated;
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
-  console.log(decodedToken);
   if (decodedToken.exp * 1000 < Date.now()) {
-    window.location.href = "/login";
     authenticated = false;
+    window.location.href = '/login';
+  } else {
+    authenticated = true;
   }
-  authenticated = true;
-  window.location.href = "/login";
-} else {
-  authenticated = true;
 }
 
 class App extends Component {
@@ -49,8 +46,6 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                {/* <AuthRoute exact path="/login" component={login} authenticated={authenticated}/>
-                <AuthRoute exact path="/signup" component={signup} authenticated={authenticated}/> */}
                 <AuthRoute
                   exact
                   path="/login"
