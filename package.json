@@ -1,4 +1,5 @@
 {
+  "homepage": "http://michaelsudirman.github.io/soc-med-client",
   "name": "soc-med-client",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +16,8 @@
     "react-scripts": "3.3.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +38,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://us-central1-soc-med.cloudfunctions.net/api"
+  "proxy": "https://us-central1-soc-med.cloudfunctions.net/api",
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  }
 }
