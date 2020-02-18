@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/app.png";
-import axios from "axios";
 import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
@@ -122,7 +121,7 @@ login.propTypes = {
   UI: PropTypes.object.isRequired
 };
 
-const mapStateToPtops = state => ({
+const mapStateToProps = state => ({
   user: state.user,
   UI: state.UI
 });
@@ -132,6 +131,6 @@ const mapActionsToProps = {
 };
 
 export default connect(
-  mapStateToPtops,
+  mapStateToProps,
   mapActionsToProps
 )(withStyles(styles)(login));
