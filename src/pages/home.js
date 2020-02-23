@@ -4,6 +4,8 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 // Components
 import Post from '../components/Post'
+import Profile from '../components/Profile'
+
 export class home extends Component {
   state = {
     posts: null
@@ -25,12 +27,12 @@ export class home extends Component {
       <p>Loading...</p>
     );
     return (
-      <Grid container spacing={16}>
+      <Grid container spacing={3}>
         <Grid item sm={8} xs={12}>
           {recentPostsMarkUp}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Profile...</p>
+          <Profile></Profile>
         </Grid>
       </Grid>
     );
