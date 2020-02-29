@@ -15,6 +15,7 @@ const reducers = combineReducers({
   UI: uiReducer
 });
 
+// Enable store to work without DevTools. Creates its own tools during production stage
 // eslint-disable-next-line no-underscore-dangle
 let devTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();

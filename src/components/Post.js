@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import relativeTime from 'dayjs/plugin/relativeTime'
+import relativeTime from "dayjs/plugin/relativeTime";
+import PropTypes from "prop-types";
+// Components
+import MyButton from "../util/MyButton";
 // Material UI imports
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+// Icons
+import ChatIcon from "@material-ui/icons/Chat";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// Redux
+import { connect } from "react-redux";
+import { likePost, unlikePost } from "../redux/actions/dataActions";
 
 const styles = {
   card: {
@@ -24,8 +34,26 @@ const styles = {
 };
 
 class Post extends Component {
+  likedPost = () => {
+    if (
+      this.props.user.likes &&
+      this.props.user.likes.find(
+        like => like.postId === this.props.post.postId
+      )
+    ) {
+      return true;
+    } else return false;
+  };
+
+  likePost = () => {
+    this.props.likePost(this.props.post.postId)
+  }
+  unlikePost = () => {
+    this.props.unlikePost(this.props.post.postId)
+  }
+
   render() {
-    dayjs.extend(relativeTime)
+    dayjs.extend(relativeTime);
     const {
       classes,
       post: {
@@ -33,12 +61,32 @@ class Post extends Component {
         createdAt,
         userImage,
         userHandle,
-        screamId,
+        postId,
         likeCount,
         commentCount
+      },
+      user: {
+        authenticated
       }
     } = this.props;
     // Destructuring -> Equivalent to: classes = this.props.classes;
+    const likeButton = !authenticated ? (
+      <MyButton tip="like">
+        <Link to="/login">
+          <FavoriteBorderIcon color="primary"/>
+        </Link>
+      </MyButton>
+    ): (
+      this.likedPost() ? (
+        <MyButton tip="unlike" onClick={this.unlikePost}>
+          <FavoriteIcon color="primary"/>
+        </MyButton>
+      ): (
+        <MyButton tip="like" onClick={this.likePost}>
+        <FavoriteBorderIcon color="primary"/>
+      </MyButton>
+      )
+    )
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -59,10 +107,36 @@ class Post extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
+          {likeButton}
+          <span>{likeCount} likes</span>
+          <MyButton tip="comments">
+            <ChatIcon color="primary" />
+          </MyButton>
+          <span>{commentCount} comments</span>
         </CardContent>
       </Card>
     );
   }
 }
 
-export default withStyles(styles)(Post);
+Post.propTypes = {
+  likePost: PropTypes.func.isRequired,
+  unlikePost: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+const mapActionsToProps = {
+  likePost,
+  unlikePost
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Post));
