@@ -2,7 +2,8 @@ import {
   SET_POSTS,
   LIKE_POST,
   UNLIKE_POST,
-  LOADING_DATA
+  LOADING_DATA,
+  DELETE_POST
 } from "../types";
 
 const initialState = {
@@ -23,17 +24,24 @@ export default function(state = initialState, action) {
       return {
         ...state,
         posts: action.payload,
-        loading:false
+        loading: false
       };
 
     case LIKE_POST:
-    
+
     // eslint-disable-next-line no-fallthrough
     case UNLIKE_POST:
-      let index = state.posts.findIndex(
+      const unlikeIndex = state.posts.findIndex(
         post => post.postId === action.payload.postId
       );
-      state.posts[index] = action.payload;
+      state.posts[unlikeIndex] = action.payload;
+      return {
+        ...state
+      };
+
+    case DELETE_POST:
+      const deleteIndex = state.posts.findIndex(post => post.postId === action.payload);
+      state.posts.splice(deleteIndex, 1);
       return {
         ...state
       };
