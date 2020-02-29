@@ -7,8 +7,9 @@ import MyButton from "../util/MyButton";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+// Components
+import CreatePost from "./CreatePost"
 //  Icons
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
@@ -20,16 +21,14 @@ export class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <MyButton tip="Create a Post">
-                <AddIcon />
-              </MyButton>
+              <CreatePost/>
               <Link to="/">
                 <MyButton tip="Home">
-                  <HomeIcon />
+                  <HomeIcon/>
                 </MyButton>
               </Link>
               <MyButton tip="Notifications">
-                <NotificationsIcon />
+                <NotificationsIcon/>
               </MyButton>
             </Fragment>
           ) : (
