@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 // Components
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import LikeButton from "./LikeButton";
+import Comments from "./Comments";
 // Redux
 import { connect } from "react-redux";
-import { getPost } from "../redux/actions/dataActions";
+import { getPost } from "../../redux/actions/dataActions";
 // Material UI imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
@@ -18,14 +19,10 @@ import Typography from "@material-ui/core/Typography";
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
-import ChatIcon from '@material-ui/icons/Chat';
+import ChatIcon from "@material-ui/icons/Chat";
 
 const styles = theme => ({
   ...theme.global,
-  invisibleSeparator: {
-    border: "none",
-    margin: 4
-  },
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -45,8 +42,14 @@ const styles = theme => ({
   },
   spinnerContainer: {
     textAlign: "center"
+  },
+  visibleSeparator: {
+    width: "100%",
+    borderBottom: "1px solid rgba(0,0,0,0.1)",
+    marginBottom: 20
   }
 });
+
 class PostDialog extends Component {
   state = {
     open: false
@@ -69,7 +72,8 @@ class PostDialog extends Component {
         likeCount,
         commentCount,
         userImage,
-        userHandle
+        userHandle,
+        comments
       },
       UI: { loading }
     } = this.props;
@@ -99,13 +103,15 @@ class PostDialog extends Component {
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
           <LikeButton postId={postId} />
-          {postId ? (<div>yes</div>): (<div>no</div>)}
+          {postId ? <div>yes</div> : <div>no</div>}
           <span>{likeCount} likes</span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <Comments comments={comments} />
       </Grid>
     );
 
