@@ -68,6 +68,7 @@ export const createPost = newPost => dispatch => {
 
 // Like a post
 export const likePost = postId => dispatch => {
+  console.log(`/post/${postId}/like`)
   axios
     .get(`/post/${postId}/like`)
     .then(res => {

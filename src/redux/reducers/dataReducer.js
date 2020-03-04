@@ -43,6 +43,9 @@ export default function(state = initialState, action) {
         post => post.postId === action.payload.postId
       );
       state.posts[unlikeIndex] = action.payload;
+      if (state.post.postId === action.payload.postId) {
+        state.post = action.payload;
+      }
       return {
         ...state
       };

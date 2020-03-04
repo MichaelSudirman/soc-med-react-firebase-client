@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 // Components
 import MyButton from "../util/MyButton";
+import LikeButton from "./LikeButton";
 // Redux
 import { connect } from "react-redux";
 import { getPost } from "../redux/actions/dataActions";
@@ -11,13 +12,13 @@ import { getPost } from "../redux/actions/dataActions";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
+import ChatIcon from '@material-ui/icons/Chat';
 
 const styles = theme => ({
   ...theme.global,
@@ -37,6 +38,13 @@ const styles = theme => ({
   closeButton: {
     position: "absolute",
     left: "90%"
+  },
+  expandButton: {
+    position: "absolute",
+    left: "90%"
+  },
+  spinnerContainer: {
+    textAlign: "center"
   }
 });
 class PostDialog extends Component {
@@ -67,7 +75,9 @@ class PostDialog extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={200} />
+      <div className={classes.spinnerContainer}>
+        <CircularProgress size={100} thickness={1} />
+      </div>
     ) : (
       <Grid container spacing={3}>
         <Grid item sm={5}>
@@ -82,12 +92,19 @@ class PostDialog extends Component {
           >
             @{userHandle}
           </Typography>
-          <hr classes={classes.invisibleSeparator} />
+          <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
+          <LikeButton postId={postId} />
+          {postId ? (<div>yes</div>): (<div>no</div>)}
+          <span>{likeCount} likes</span>
+          <MyButton tip="comments">
+            <ChatIcon color="primary" />
+          </MyButton>
+          <span>{commentCount} comments</span>
         </Grid>
       </Grid>
     );
@@ -136,11 +153,11 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-const mapActionToProps = {
+const mapActionsToProps = {
   getPost
 };
 
 export default connect(
   mapStateToProps,
-  mapActionToProps
+  mapActionsToProps
 )(withStyles(styles)(PostDialog));
