@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 // Components
 import MyButton from "../util/MyButton";
 import DeletePost from "./DeletePost";
+import PostDialog from './PostDialog'
 // Material UI imports
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -118,6 +119,7 @@ class Post extends Component {
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} comments</span>
+          <PostDialog postId={postId} userHandle={userHandle}/>
         </CardContent>
       </Card>
     );
