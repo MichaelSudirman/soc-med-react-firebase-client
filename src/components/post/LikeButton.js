@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
 import { likePost, unlikePost } from "../../redux/actions/dataActions";
-// Components
+// Components and utils
 import MyButton from "../../util/MyButton";
-// Icons
+// Material UI icon imports
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 

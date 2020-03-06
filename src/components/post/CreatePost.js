@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-// Components
-import MyButton from "../../util/MyButton";
 // Redux
 import { connect } from "react-redux";
 import { createPost, clearErrors } from "../../redux/actions/dataActions";
-// Material UI imports
+// Components and utils
+import MyButton from "../../util/MyButton";
+// Material UI core imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -13,7 +13,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// Icons
+// Material UI icon imports
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 

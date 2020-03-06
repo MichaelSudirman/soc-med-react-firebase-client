@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/app.png";
 import { Link } from "react-router-dom";
-// Material UI imports
+// Redux
+import { connect } from "react-redux";
+import { signupUser } from "../redux/actions/userActions";
+// Material UI core imports
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// Redux
-import { connect } from "react-redux";
-import { signupUser } from "../redux/actions/userActions";
 
 // global styles
 const styles = theme => ({

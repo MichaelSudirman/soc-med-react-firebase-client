@@ -12,12 +12,11 @@ import { logoutUser, getUserData } from "./redux/actions/userActions";
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
-// Components
+// Components and utils
 import Navbar from "./components/layout/Navbar";
-// Utils
 import themeObject from "./util/theme";
 import AuthRoute from "./util/AuthRoute";
-// Material UI imports
+// Material UI core imports
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
-// Material UI imports
+// Material UI core imports
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";

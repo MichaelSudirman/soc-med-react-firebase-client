@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
-// Material UI imports
+// Redux
+import { connect } from "react-redux";
+import { submitComment } from "../../redux/actions/dataActions";
+// Material UI core imports
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-// Redux
-import { connect } from "react-redux";
-import { submitComment } from "../../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme.global

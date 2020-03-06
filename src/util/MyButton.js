@@ -1,4 +1,5 @@
 import React from "react";
+// Material UI core imports
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 
