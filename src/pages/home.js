@@ -6,6 +6,7 @@ import { getPosts } from "../redux/actions/dataActions";
 // Components and utils
 import Post from "../components/post/Post";
 import Profile from "../components/profile/Profile";
+import PostSkeleton from "../util/PostSkeleton";
 // Material UI core imports
 import Grid from "@material-ui/core/Grid";
 
@@ -19,7 +20,7 @@ export class home extends Component {
     let recentPostsMarkUp = !loading ? (
       posts.map(post => <Post key={post.postId} post={post} />)
     ) : (
-      <p>Loading...</p>
+      <PostSkeleton />
     );
     return (
       <Grid container spacing={3}>
@@ -27,7 +28,7 @@ export class home extends Component {
           {recentPostsMarkUp}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Profile></Profile>
+          <Profile />
         </Grid>
       </Grid>
     );
